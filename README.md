@@ -20,14 +20,14 @@
       "errors":"mysql: context deadline exceeded: health: readiness probe"
    }
    ```
-2. Provides a function interface to implement to check any dependency: `func(ctx context.Context) error`.
-3. Available strategies: 
+2. Available strategies: 
    - `Liveness` to indicate if the probe failed that this instance is unhealthy and should be destroyed or restarted. <br />
    In case of error an HTTP status `ServiceUnavailable` is returned, `GatewayTimeout` in case of deadline exceeded.
-     - `Readiness` to notify if the probe failed that this application should no longer receive any traffic. <br />
-     In case of error an HTTP status `FailedDependency` is returned, `RequestTimeout` in case of deadline exceeded.
-4. Each probe has a name, a timeout, a strategy and a function to check.
-5. Provides a function to check file writing.
+   - `Readiness` to notify if the probe failed that this application should no longer receive any traffic. <br />
+   In case of error an HTTP status `FailedDependency` is returned, `RequestTimeout` in case of deadline exceeded.
+3. Each probe has a name, a timeout, a strategy and a function to check.
+4. Function interface used to check any dependency: `func(ctx context.Context) error`.
+5. Provides a ready-to-use function to check file writing.
 
 
 ## Example
