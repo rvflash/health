@@ -21,11 +21,11 @@
    }
    ```
 2. Provides a function interface to implement to check any dependency: `func(ctx context.Context) error`.
-3. 2 strategies: 
+3. Available strategies: 
    - `Liveness` to indicate if the probe failed that this instance is unhealthy and should be destroyed or restarted. <br />
    In case of error an HTTP status `ServiceUnavailable` is returned, `GatewayTimeout` in case of deadline exceeded.
-   - `Readiness` to notify if the probe failed that this application should no longer receive any traffic. <br />
-   In case of error an HTTP status `FailedDependency` is returned, `RequestTimeout` in case of deadline exceeded.
+     - `Readiness` to notify if the probe failed that this application should no longer receive any traffic. <br />
+     In case of error an HTTP status `FailedDependency` is returned, `RequestTimeout` in case of deadline exceeded.
 4. Each probe has a name, a timeout, a strategy and a function to check.
 5. Provides a function to check file writing.
 

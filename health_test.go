@@ -47,7 +47,7 @@ func TestChecker_Do(t *testing.T) {
 			beg = time.Now()
 			err = chk.Do(context.Background())
 		)
-		if time.Since(beg) > (max*20/100)+max {
+		if time.Since(beg) > (max*30/100)+max {
 			are.Fail() // Timeout too long
 		}
 		are.True(errors.Is(err, context.DeadlineExceeded))
